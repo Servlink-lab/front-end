@@ -1,11 +1,125 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+    
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Trampo Certo</title>
+        <style>
+            :root {
+              --bg-main: #222831;
+              --bg-secondary: #30475E;
+              --text-main: #E8E8E8;
+              --accent: #F05454;
+            }
+
+            body {
+              background: var(--bg-main);
+              font-family: Arial, sans-serif;
+            }
+
+            /* container */
+            .logo {
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              font-weight: bold;
+            }
+
+            /* texto */
+            .text {
+              font-size: 32px;
+              letter-spacing: 2px;
+            }
+
+            .trampo {
+              color: var(--text-main);
+            }
+
+            .certo {
+              color: var(--accent);
+              margin-left: 6px;
+            }
+
+            /* ícone */
+            .icon {
+              width: 40px;
+              height: 40px;
+            }
+
+            /* maleta */
+            .bag {
+              width: 100%;
+              height: 100%;
+              background: var(--bg-secondary);
+              border-radius: 6px;
+              position: relative;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+
+            /* alça da maleta */
+            .bag::before {
+              content: "";
+              position: absolute;
+              top: -6px;
+              width: 20px;
+              height: 8px;
+              border: 2px solid var(--bg-secondary);
+              border-bottom: none;
+              border-radius: 4px 4px 0 0;
+            }
+
+            /* check */
+            .check {
+              width: 14px;
+              height: 8px;
+              border-left: 3px solid var(--accent);
+              border-bottom: 3px solid var(--accent);
+              transform: rotate(-45deg);
+            }
+
+            /* hover */
+            .logo:hover {
+              transform: scale(1.05);
+              transition: 0.3s ease;
+            }
+        </style>
     </head>
     <body>
+        <header class="header">
+             <div class="header-inner">
+               <div class="logo">
+                 <div class="icon">
+                   <div class="bag">
+                     <div class="check"></div>
+                   </div>
+                 </div>
+                 <span class="text">
+                   <span class="trampo">Trampo</span><span class="certo">Certo</span>
+                 </span>
+               </div>
+               <span class="logo-text">Trampo Certo</span> <!--NOSSO LOGO TEMOS QUE CRIAR-->
+               </div>
+               <span class="link search-button"></span>
+                 <span class="icon-search-white"></span>
+                   "Pesquisar vagas de emprego"
+                </span>
+               
+
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="#">Home</a></li>
+                        <li class="nav-item"><a href="#">Sobre</a></li>
+                        <li class="nav-item"><a href="#">Serviços</a></li>
+                        <li class="nav-item"><a href="#">Contato</a></li>
+                    </ul>
+                </nav>
+
+             </div>
+        </header>
         <h1>Trampo Certo!</h1>
+        
     </body>
 </html>
