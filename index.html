@@ -14,8 +14,25 @@
             }
 
             body {
-              background: var(--bg-main);
               font-family: Arial, sans-serif;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              min-height: 100vh;
+            }
+
+            .header {
+              text-align: center;
+              width: 100%;
+              padding: 20px;
+            }
+
+            .header-inner {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
             }
 
             /* container */
@@ -85,9 +102,127 @@
               transform: scale(1.05);
               transition: 0.3s ease;
             }
+
+            /* caixa de busca */
+            .search-box {
+              margin-top: 20px;
+              border: 2px solid #ccc;
+              border-radius: 8px;
+              padding: 10px;
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              max-width: 400px;
+              background: #f9f9f9;
+              margin-left: auto;
+              margin-right: auto;
+            }
+
+            .search-box input {
+              flex: 1;
+              border: none;
+              outline: none;
+              font-size: 16px;
+              background: transparent;
+            }
+
+            .search-box button {
+              background: var(--accent);
+              color: white;
+              border: none;
+              padding: 8px 16px;
+              border-radius: 4px;
+              cursor: pointer;
+              font-weight: bold;
+            }
+
+            .search-box button:hover {
+              opacity: 0.9;
+            }
+
+            /* footer e nav */
+            .footer {
+              margin-top: 50px;
+              padding: 20px;
+              border-top: 2px solid #ddd;
+              text-align: center;
+            }
+
+            .nav-list {
+              list-style: none;
+              padding: 0;
+              display: flex;
+              gap: 20px;
+              justify-content: center;
+            }
+
+            .nav-item a {
+              text-decoration: none;
+              color: #333;
+              font-weight: bold;
+              transition: color 0.3s;
+            }
+
+            .nav-item a:hover {
+              color: var(--accent);
+            }
+
+            /* botões de autenticação */
+            .auth-buttons {
+              display: flex;
+              gap: 10px;
+              justify-content: flex-end;
+              padding: 15px 30px;
+              background: white;
+              box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+              position: fixed;
+              top: 0;
+              right: 0;
+              left: 0;
+              z-index: 1000;
+            }
+
+            .auth-buttons button {
+              padding: 10px 20px;
+              border: none;
+              border-radius: 4px;
+              cursor: pointer;
+              font-weight: bold;
+              transition: 0.3s;
+              font-size: 14px;
+            }
+
+            .login-btn {
+              background: transparent;
+              color: #333;
+              border: 2px solid #333;
+            }
+
+            .login-btn:hover {
+              background: #333;
+              color: white;
+            }
+
+            .signup-btn {
+              background: var(--accent);
+              color: white;
+            }
+
+            .signup-btn:hover {
+              opacity: 0.9;
+            }
+
+            /* adicionar espaço no topo para navbar fixo */
+            body {
+              padding-top: 70px;
+            }
         </style>
     </head>
     <body>
+        <div class="auth-buttons">
+          <button class="login-btn">Login</button>
+          <button class="signup-btn">Cadastre-se</button>
+        </div>
         <header class="header">
              <div class="header-inner">
                <div class="logo">
@@ -100,26 +235,25 @@
                    <span class="trampo">Trampo</span><span class="certo">Certo</span>
                  </span>
                </div>
-               <span class="logo-text">Trampo Certo</span> <!--NOSSO LOGO TEMOS QUE CRIAR-->
                </div>
-               <span class="link search-button"></span>
-                 <span class="icon-search-white"></span>
-                   "Pesquisar vagas de emprego"
-                </span>
-               
-
-                <nav class="nav">
-                    <ul class="nav-list">
-                        <li class="nav-item"><a href="#">Home</a></li>
-                        <li class="nav-item"><a href="#">Sobre</a></li>
-                        <li class="nav-item"><a href="#">Serviços</a></li>
-                        <li class="nav-item"><a href="#">Contato</a></li>
-                    </ul>
-                </nav>
-
+               <div class="search-box">
+                 <input type="text" placeholder="Pesquisar vagas de emprego">
+                 <button>🔍</button>
+               </div>
              </div>
         </header>
         <h1>Trampo Certo!</h1>
+        
+        <footer class="footer">
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#">Home</a></li>
+                    <li class="nav-item"><a href="#">Sobre</a></li>
+                    <li class="nav-item"><a href="#">Serviços</a></li>
+                    <li class="nav-item"><a href="#">Contato</a></li>
+                </ul>
+            </nav>
+        </footer>
         
     </body>
 </html>
