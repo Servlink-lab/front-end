@@ -1,67 +1,93 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Trampo Certo</title>
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    
-    <body> 
-        <header>
-            <img src="trampo-certo-wordmark.svg" alt="Trampo Certo" width="200" height="60">
-            <nav>
-                <ul>
-                    <li><a href="#inicio">Início</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#cadastre-se">Cadastre-se</a></li>
-                </ul>
-            </nav>
-        </header>
 
-        <main>
-            <section id="inicio">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trampo Certo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Quicksand:wght@300..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <img src="trampo-certo-wordmark.svg" alt="Trampo Certo" width="200" height="60">
+        <nav>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#pois">Pontos de Interesse</a></li>
+                <li><a href="#cadastre-se">Cadastre-se</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio">
             <h1>Hospitalidade sob demanda em Florianópolis</h1>
             <p>Conectamos restaurantes, bares e hotéis a profissionais freelancers verificados.</p> <!-- MUDAR FRASE -->
             <a href="#sobre">Conhecer a plataforma</a>
-            </section>
-            <section id="sobre">
+        </section>
+        <section id="sobre">
             <h2>Como funciona</h2>
             <p>Da vaga urgente ao pagamento do profissional.</p> <!-- MUDAR FRASE -->
-            <p>Adicionar alguma descrição aqui</p>
-                <h3>Passo a passo</h3>
-                <article>
-                    <h3>Publique a vaga</h3>
-                    <p>Estabelecimento cria um turno, localização, função, horário e valor.</p> <!-- "DE FORMA RÁPIDA" (INCLUIR APELO) -->
-                </article>
-                <article>
-                    <h3>Profissional aceita</h3>
-                    <p>Nosso sistema notifica profissionais verificados e disponíveis na região.</p>
-                </article>
-                <article>
-                    <h3>Trabalho feito, pagamento liberado</h3>
-                    <p>Check-in/out no local, avaliação bilateral e pagamento automático.</p>
-                </article>
-            </section>
-            <section id="pois">
-            <h2>Pontos de Interesse</h2>
-            <p> Adicionar tabela com estabelecimentos? </p>
-            <p>Restaurantes, bares e hotéis em nossa base de dados</p> <!-- COLOCAR MAPA COM LOCALIZAÇÃO DOS RESTAURANTES (USAR DADOS - COLETAR OSM/QGIS) -->
             <article>
-                <h3>Nome estabelecimento</h3>
-                <p> Endereço ou bairro</p>
-                <p>Descrição</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Ostradamus+Florianopolis" rel="noopener noreferrer" target="_blank">Ver no mapa </a> 
+                <span>01</span>
+                <h3>Publique a vaga</h3>
+                <p>Estabelecimento cria um turno, localização, função, horário e valor.</p>
+                <!-- "DE FORMA RÁPIDA" (INCLUIR APELO) -->
             </article>
-            </section>
-        </main>
+            <article>
+                <span>02</span>
+                <h3>Profissional aceita</h3>
+                <p>Nosso sistema notifica profissionais verificados e disponíveis na região.</p>
+            </article>
+            <article>
+                <span>03</span>
+                <h3>Trabalho feito, pagamento liberado</h3>
+                <p>Check-in/out no local, avaliação bilateral e pagamento automático.</p>
+            </article>
+        </section>
+        <section id="pois">
+            <h2>Pontos de Interesse</h2>
+            <p>Confira alguns dos nossos parceiros:</p>
+            <div class="grid-pois">
+                <article>
+                    <h3>Nome estabelecimento</h3>
+                    <p> Endereço</p>
+                    <p>Descrição</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Ostradamus+Florianopolis"
+                        rel="noopener noreferrer" target="_blank">Ver no mapa </a>
+                </article>
+                <article>
+                    <h3>Nome estabelecimento</h3>
+                    <p> Endereço</p>
+                    <p>Descrição</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Ostradamus+Florianopolis"
+                        rel="noopener noreferrer" target="_blank">Ver no mapa </a>
+                </article>
+                <article>
+                    <h3>Nome estabelecimento</h3>
+                    <p> Endereço</p>
+                    <p>Descrição</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Ostradamus+Florianopolis"
+                        rel="noopener noreferrer" target="_blank">Ver no mapa </a>
+                </article>
+            </div>
+        </section>
+    </main>
+    <footer>
         <p>Projeto acadêmico desenvolvido para a Sprint 1.</p>
-        <footer>
-            <p>Profissionalizando a hospitalidade em Florianópolis.</p>
-            <p>Parceiros institucionais:</p> <!-- Ex:  SHRBS · SENAC · SEBRAE · ACIF -->
-            <a href="mailto:contato@trampocerto.com.br">Contato</a>
-            <p>© 2026 Trampo Certo. Projeto acadêmico — Cesusc.</p>
-        </footer>
+        <p>Profissionalizando a hospitalidade em Florianópolis.</p>
+        <p>Parceiros institucionais:</p> <!-- Ex:  SHRBS · SENAC · SEBRAE · ACIF -->
+        <a href="mailto:contato@trampocerto.com.br">Contato</a>
+        <p>© 2026 Trampo Certo. Projeto acadêmico — Cesusc.</p>
+    </footer>
 
-    </body>
+</body>
+
 </html>
