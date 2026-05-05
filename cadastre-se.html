@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastre-se — Trampo Certo</title>
+    <meta name="description" content="Junte-se à maior plataforma de hospitalidade sob demanda em Florianópolis.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2B7FFF">
+</head>
+
+<body>
+    <header>
+        <a href="index.html">
+            <img src="trampo-certo-wordmark.svg" alt="Trampo Certo" width="200" height="60">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html#inicio">Início</a></li>
+                <li><a href="index.html#sobre">Sobre</a></li>
+                <li><a href="index.html#enquadramento-mapa">Pontos de Interesse</a></li>
+                <li><a href="cadastre-se.html">Cadastre-se</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="signup-page">
+        <section class="signup-container">
+            <h2>Faça parte da plataforma</h2>
+            <p>Seja você um estabelecimento precisando de equipe ou um profissional buscando turnos, deixe seu e-mail para receber nosso contato inicial.</p>
+            
+            <form class="signup-form" onsubmit="event.preventDefault(); alert('Email cadastrado com sucesso! Em breve entraremos em contato.');">
+                <div class="input-group">
+                    <input type="email" id="email" name="email" placeholder="Seu melhor e-mail" required>
+                    <button type="submit" class="btn-primary">Enviar</button>
+                </div>
+                <div class="form-options">
+                    <label>
+                        <input type="radio" name="tipo" value="freelancer" checked>
+                        Sou Freelancer
+                    </label>
+                    <label>
+                        <input type="radio" name="tipo" value="estabelecimento">
+                        Sou Estabelecimento
+                    </label>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>Projeto acadêmico desenvolvido para a Sprint 1.</p>
+        <p>Profissionalizando a hospitalidade em Florianópolis.</p>
+        <p>Parceiros institucionais:</p>
+        <a href="mailto:contato@trampocerto.com.br">Contato</a>
+        <p>© 2026 Trampo Certo. Projeto acadêmico — Cesusc.</p>
+    </footer>
+
+    <script type="module" src="js/ui.js"></script>
+</body>
+
+</html>
