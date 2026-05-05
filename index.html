@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trampo Certo — Hospitalidade sob demanda em Florianópolis</title>
+    <meta name="description"
+        content="Conectamos restaurantes, bares e hotéis de Florianópolis a profissionais freelancers verificados. Veja o mapa interativo com mais de 800 estabelecimentos.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Quicksand:wght@300..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2B7FFF">
+</head>
+
+<body>
+    <header>
+        <img src="trampo-certo-wordmark.svg" alt="Trampo Certo" width="200" height="60">
+        <nav>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#enquadramento-mapa">Pontos de Interesse</a></li>
+                <li><a href="cadastre-se.html">Cadastre-se</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio">
+            <h1>Hospitalidade sob demanda em Florianópolis</h1>
+            <p>Conectamos restaurantes, bares e hotéis a profissionais freelancers verificados.</p> <!-- MUDAR FRASE -->
+            <a href="#sobre">Conhecer a plataforma</a>
+        </section>
+        <section id="sobre">
+            <h2>Como funciona</h2>
+            <p>Da vaga urgente ao pagamento do profissional.</p> <!-- MUDAR FRASE -->
+            <article>
+                <span>01</span>
+                <h3>Publique a vaga</h3>
+                <p>Estabelecimento cria um turno, localização, função, horário e valor.</p>
+                <!-- "DE FORMA RÁPIDA" (INCLUIR APELO) -->
+            </article>
+            <article>
+                <span>02</span>
+                <h3>Profissional aceita</h3>
+                <p>Nosso sistema notifica profissionais verificados e disponíveis na região.</p>
+            </article>
+            <article>
+                <span>03</span>
+                <h3>Trabalho feito, pagamento liberado</h3>
+                <p>Check-in/out no local, avaliação bilateral e pagamento automático.</p>
+            </article>
+        </section>
+
+
+        <section id="mapa">
+            <h2>Mapa de Florianópolis</h2>
+            <p>Explore mais de 800 estabelecimentos parceiros na ilha. Filtre por categoria para encontrar exatamente o
+                que procura.</p>
+
+            <div class="map-controls" id="enquadramento-mapa">
+                <div class="map-filters" id="map-filters">
+                    <button class="map-filter-btn active" data-filter="todos" id="filter-todos">
+                        <svg class="filter-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                        </svg>
+                        Todos
+                    </button>
+                    <button class="map-filter-btn" data-filter="restaurante" id="filter-restaurante">
+                        <svg class="filter-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z" />
+                        </svg>
+                        Restaurantes
+                    </button>
+                    <button class="map-filter-btn" data-filter="bar" id="filter-bar">
+                        <svg class="filter-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M21 5V3H3v2l8 9v5H6v2h12v-2h-5v-5l8-9zM5.66 5h12.69l-1.78 2H7.43L5.66 5z" />
+                        </svg>
+                        Bares
+                    </button>
+                    <button class="map-filter-btn" data-filter="hotel" id="filter-hotel">
+                        <svg class="filter-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V5H1v15h2v-3h18v3h2V10c0-2.21-1.79-4-4-4z" />
+                        </svg>
+                        Hotéis
+                    </button>
+                    <span class="map-counter" id="map-counter">Carregando...</span>
+                </div>
+                <button class="btn-near-me" id="btn-near-me">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3A8.994 8.994 0 0 0 13 3.06V1h-2v2.06A8.994 8.994 0 0 0 3.06 11H1v2h2.06A8.994 8.994 0 0 0 11 20.94V23h2v-2.06A8.994 8.994 0 0 0 20.94 13H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z" />
+                    </svg>
+                    Vagas perto de mim
+                </button>
+            </div>
+
+            <div class="map-wrapper">
+                <div id="map-container">
+                    <div id="map-loader" class="map-loader">
+                        <div class="map-loader-spinner"></div>
+                        <p>Carregando mapa...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <footer>
+        <p>Projeto acadêmico desenvolvido para a Sprint 1.</p>
+        <p>Profissionalizando a hospitalidade em Florianópolis.</p>
+        <p>Parceiros institucionais:</p> <!-- Ex:  SHRBS · SENAC · SEBRAE · ACIF -->
+        <a href="mailto:contato@trampocerto.com.br">Contato</a>
+        <p>© 2026 Trampo Certo. Projeto acadêmico — Cesusc.</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+    <script type="module" src="js/mapa.js"></script>
+</body>
+
+</html>
