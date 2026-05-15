@@ -1,4 +1,5 @@
 import { TILE_LAYERS, haversineDistance } from './map-config.js';
+import { buscarVagas, excluirVaga, atualizarVaga } from './api.js';
 
 let currentTheme = localStorage.getItem('tema') || 'dark';
 
@@ -109,3 +110,122 @@ export function setupGeolocation(map, allData, renderNearbyFn) {
     );
   });
 }
+
+let editingVagaId = null;
+
+function openEditModal(vaga) {
+  editingVagaId = vaga.id;
+  const modal = document.getElementById('vaga-modal');
+  const cargoInput = document.getElementById('edit-cargo');
+  const valorInput = document.getElementById('edit-valor');
+
+  if (!modal || !cargoInput || !valorInput) return;
+
+  cargoInput.value = vaga.cargo;
+  valorInput.value = vaga.valor;
+  modal.classList.remove('hidden');
+}
+
+function closeEditModal() {
+  const modal = document.getElementById('vaga-modal');
+  const form = document.getElementById('editarVagaForm');
+
+  if (!modal || !form) return;
+
+  modal.classList.add('hidden');
+  form.reset();
+  editingVagaId = null;
+}
+
+async function handleDelete(id) {
+  try {
+    await excluirVaga(id);
+    await renderizarVagas();
+  } catch (error) {
+    console.error('Erro ao excluir vaga:', error);
+    alert('Não foi possível excluir a vaga.');
+  }
+}
+
+async function handleEdit(vaga) {
+  openEditModal(vaga);
+}
+
+async function renderizarVagas() {
+  const container = document.getElementById('lista-vagas');
+  if (!container) {
+    console.error('Container #lista-vagas não encontrado');
+    return;
+  }
+
+  try {
+    console.log('Buscando vagas...');
+    const vagas = await buscarVagas();
+    console.log('Vagas recebidas:', vagas);
+    container.innerHTML = '';
+
+    if (!Array.isArray(vagas) || vagas.length === 0) {
+      console.log('Nenhuma vaga encontrada');
+      container.innerHTML = '<p>Nenhuma vaga encontrada.</p>';
+      return;
+    }
+
+    vagas.forEach(vaga => {
+      container.innerHTML += `
+        <div class="card-vaga">
+          <h3>${vaga.cargo}</h3>
+          <p>R$ ${vaga.valor}</p>
+          <div class="card-actions">
+            <button class="btn-secondary btn-editar" data-id="${vaga.id}">Editar</button>
+            <button class="btn-secondary btn-excluir" data-id="${vaga.id}">Excluir</button>
+          </div>
+        </div>
+      `;
+    });
+
+    container.querySelectorAll('.btn-excluir').forEach(button => {
+      button.addEventListener('click', () => handleDelete(Number(button.dataset.id)));
+    });
+
+    container.querySelectorAll('.btn-editar').forEach(button => {
+      const id = Number(button.dataset.id);
+      const vaga = vagas.find(item => item.id === id);
+      if (vaga) {
+        button.addEventListener('click', () => handleEdit(vaga));
+      }
+    });
+  } catch (error) {
+    console.error('Erro ao buscar vagas:', error);
+    container.innerHTML = '<p>Não foi possível carregar as vagas.</p>';
+  }
+}
+
+function setupEditModal() {
+  const form = document.getElementById('editarVagaForm');
+  const cancelButton = document.getElementById('cancelEdit');
+
+  if (!form || !cancelButton) return;
+
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+
+    if (!editingVagaId) return;
+
+    const cargo = document.getElementById('edit-cargo').value;
+    const valor = document.getElementById('edit-valor').value;
+
+    try {
+      await atualizarVaga(editingVagaId, { cargo, valor });
+      closeEditModal();
+      await renderizarVagas();
+    } catch (error) {
+      console.error('Erro ao atualizar vaga:', error);
+      alert('Não foi possível atualizar a vaga.');
+    }
+  });
+
+  cancelButton.addEventListener('click', closeEditModal);
+}
+
+setupEditModal();
+renderizarVagas();

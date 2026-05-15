@@ -60,6 +60,28 @@
             </article>
         </section>
 
+        <section id="vagas">
+            <h2>Vagas publicadas</h2>
+            <div id="lista-vagas" class="lista-vagas"></div>
+        </section>
+
+        <div id="vaga-modal" class="modal hidden">
+            <div class="modal-content">
+                <h3>Editar vaga</h3>
+                <form id="editarVagaForm">
+                    <div class="input-group">
+                        <input type="text" id="edit-cargo" placeholder="Cargo" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="number" id="edit-valor" placeholder="Valor da diária" required>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="submit" class="btn-primary">Salvar</button>
+                        <button type="button" id="cancelEdit" class="btn-secondary">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
         <section id="mapa">
             <h2>Mapa de Florianópolis</h2>
@@ -127,6 +149,7 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+    <script type="module" src="js/ui.js"></script>
     <script type="module" src="js/mapa.js"></script>
 </body>
 

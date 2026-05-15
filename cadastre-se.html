@@ -34,21 +34,14 @@
             <h2>Faça parte da plataforma</h2>
             <p>Seja você um estabelecimento precisando de equipe ou um profissional buscando turnos, deixe seu e-mail para receber nosso contato inicial.</p>
             
-            <form class="signup-form" onsubmit="event.preventDefault(); alert('Email cadastrado com sucesso! Em breve entraremos em contato.');">
+            <form id="vagaForm" class="signup-form">
                 <div class="input-group">
-                    <input type="email" id="email" name="email" placeholder="Seu melhor e-mail" required>
-                    <button type="submit" class="btn-primary">Enviar</button>
+                    <input type="text" id="cargo" name="cargo" placeholder="Cargo" required>
                 </div>
-                <div class="form-options">
-                    <label>
-                        <input type="radio" name="tipo" value="freelancer" checked>
-                        Sou Freelancer
-                    </label>
-                    <label>
-                        <input type="radio" name="tipo" value="estabelecimento">
-                        Sou Estabelecimento
-                    </label>
+                <div class="input-group">
+                    <input type="number" id="valor" name="valor" placeholder="Valor da diária" required>
                 </div>
+                <button type="submit" class="btn-primary">Criar vaga</button>
             </form>
         </section>
     </main>
@@ -61,6 +54,7 @@
         <p>© 2026 Trampo Certo. Projeto acadêmico — Cesusc.</p>
     </footer>
 
+    <script src="js/cadastro.js"></script>
     <script type="module" src="js/ui.js"></script>
 </body>
 
