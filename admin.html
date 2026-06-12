@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin — Trampo Certo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <meta name="theme-color" content="#2B7FFF">
+</head>
+
+<body class="admin-page">
+    <header>
+        <a href="index.html">
+            <img src="trampo-certo-wordmark.svg" alt="Trampo Certo" width="200" height="60">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Landing</a></li>
+                <li><a href="cadastre-se.html">Cadastre-se</a></li>
+                <li><a href="admin.html" class="active">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="admin-main">
+        <section class="admin-header">
+            <h1>Painel Admin — ServLink API</h1>
+            <p>CRUD completo integrado ao backend. API: <code id="api-base-display"></code></p>
+        </section>
+
+        <div id="loading" class="admin-loading" aria-live="polite">Carregando…</div>
+        <div id="toast" class="toast" role="status"></div>
+
+        <section class="admin-config">
+            <details>
+                <summary>Configurar conexão API</summary>
+                <form id="config-form" class="admin-form-inline">
+                    <label>Base URL<input id="cfg-api-base" type="url" value="http://localhost:3000" required></label>
+                    <label>API Key<input id="cfg-api-key" type="text" value="dev-api-key-change-in-production" required></label>
+                    <button type="submit" class="btn-primary">Salvar</button>
+                </form>
+            </details>
+        </section>
+
+        <nav class="admin-tabs">
+            <button type="button" class="tab-btn active" data-entity="usuarios">Usuários</button>
+            <button type="button" class="tab-btn" data-entity="estabelecimentos">Estabelecimentos</button>
+            <button type="button" class="tab-btn" data-entity="profissionais">Profissionais</button>
+            <button type="button" class="tab-btn" data-entity="vagas">Vagas</button>
+        </nav>
+
+        <div class="admin-grid">
+            <section class="admin-panel">
+                <h2 id="form-title">Novo registro</h2>
+                <form id="record-form">
+                    <div id="entity-form" class="admin-form"></div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Salvar</button>
+                        <button type="button" id="btn-cancel-edit" class="btn-secondary">Cancelar edição</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="admin-panel">
+                <div class="panel-header">
+                    <h2 id="panel-title">Usuários</h2>
+                    <span id="table-count" class="table-count">0 registros</span>
+                </div>
+                <div class="table-wrap">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Identificação</th>
+                                <th>ID</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body"></tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 Trampo Certo — Painel administrativo acadêmico</p>
+    </footer>
+
+    <script type="module" src="js/admin.js"></script>
+</body>
+
+</html>

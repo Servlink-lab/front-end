@@ -819,7 +819,7 @@ img {
 .signup-form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .input-group {
@@ -859,10 +859,110 @@ img {
   background-color: #1a5fd9;
 }
 
+.signup-container.wide {
+  max-width: 640px;
+  text-align: left;
+}
+
+/* O atributo `hidden` precisa vencer o display flex/grid de .field e .field-row,
+   senão os campos de profissional/estabelecimento aparecem todos ao mesmo tempo. */
+.signup-form [hidden] {
+  display: none !important;
+}
+
+.signup-form .field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  text-align: left;
+  min-width: 0;
+}
+
+.signup-form .field label {
+  font-size: 0.85rem;
+  color: var(--cor-texto-suave);
+}
+
+.signup-form .field input,
+.signup-form .field select {
+  width: 100%;
+  box-sizing: border-box;
+  height: 48px;
+  padding: 0 1.2rem;
+  border-radius: 8px;
+  border: 1px solid var(--cor-borda);
+  background: transparent;
+  color: var(--cor-texto);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.signup-form .field select {
+  text-overflow: ellipsis;
+}
+
+.signup-form .field input:focus,
+.signup-form .field select:focus {
+  border-color: var(--cor-primaria);
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: end;
+}
+
+.field-section-title {
+  margin: 0.75rem 0 -0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--cor-borda);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--cor-texto-suave);
+}
+
+.signup-feedback {
+  margin: 0;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  display: none;
+}
+
+.signup-feedback.show {
+  display: block;
+}
+
+.signup-feedback.success {
+  background: rgba(34, 197, 94, 0.12);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.4);
+}
+
+.signup-feedback.error {
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+.btn-primary[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+#signup-submit {
+  margin-top: 0.75rem;
+}
+
 .form-options {
   display: flex;
   justify-content: center;
   gap: 2rem;
+  margin-bottom: 0.5rem;
   color: var(--cor-texto-suave);
   font-size: 0.9rem;
 }
@@ -884,6 +984,10 @@ img {
     gap: 1rem;
     align-items: flex-start;
   }
+
+  .field-row {
+    grid-template-columns: 1fr;
+  }
 }
 
 @keyframes spin-anim {
@@ -894,4 +998,228 @@ img {
 
 .spin {
   animation: spin-anim 1s linear infinite;
+}
+
+/* --- Admin CRUD --- */
+.admin-page header nav a.active {
+  color: var(--cor-primaria);
+  font-weight: 600;
+}
+
+.admin-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.admin-header h1 {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.admin-config {
+  margin: 1.5rem 0;
+}
+
+.admin-config summary {
+  cursor: pointer;
+  color: var(--cor-primaria);
+  font-weight: 600;
+}
+
+.admin-form-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.admin-form-inline label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+  flex: 1;
+  min-width: 200px;
+}
+
+.admin-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tab-btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  background: var(--cor-card);
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.tab-btn.active {
+  background: var(--cor-primaria);
+  color: #fff;
+  border-color: var(--cor-primaria);
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .admin-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.admin-panel {
+  background: var(--cor-card);
+  border: 1px solid var(--cor-borda);
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.admin-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.admin-form input,
+.admin-form select {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: 6px;
+  font-family: inherit;
+}
+
+.checkbox-label {
+  flex-direction: row !important;
+  align-items: center;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.table-count {
+  font-size: 0.85rem;
+  color: var(--cor-texto-suave);
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 0.6rem 0.5rem;
+  text-align: left;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.admin-table .actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.admin-table button {
+  padding: 0.35rem 0.6rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: 6px;
+  background: var(--cor-fundo);
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.btn-danger {
+  color: #dc2626;
+  border-color: #fecaca !important;
+}
+
+.admin-loading {
+  display: none;
+  padding: 0.5rem 1rem;
+  background: #dbeafe;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.admin-loading.visible {
+  display: block;
+}
+
+.toast {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s;
+  z-index: 9999;
+  max-width: 360px;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast-success {
+  background: #16a34a;
+}
+
+.toast-error {
+  background: #dc2626;
+}
+
+.form-message {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.form-message-success {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.form-message-error {
+  background: #fee2e2;
+  color: #991b1b;
 }
