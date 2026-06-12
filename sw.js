@@ -31,6 +31,12 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
 
+  // Não cachear requisições da API
+  if (url.hostname === 'localhost' && url.port === '3000') {
+    event.respondWith(fetch(event.request));
+    return;
+  }
+
   if (url.hostname.includes('basemaps.cartocdn.com')) {
     event.respondWith(
       caches.open('tiles-cache').then(cache =>
