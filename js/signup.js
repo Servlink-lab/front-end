@@ -160,7 +160,10 @@ form.addEventListener('submit', async (event) => {
     form.reset();
     toggleFields();
   } catch (err) {
-    const msg = err instanceof ApiError ? err.message : 'Não foi possível conectar à API. Verifique se o servidor está rodando.';
+    console.error(err);
+    const msg = err instanceof ApiError
+      ? err.message
+      : (err && err.message) || 'Não foi possível conectar à API. Verifique se o servidor está rodando.';
     showFeedback(msg, 'error');
   } finally {
     submitBtn.disabled = false;
